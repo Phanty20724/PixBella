@@ -1,4 +1,5 @@
-import { Upload, User, Sparkles } from "lucide-react";
+import { Upload, User, Sparkles, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -21,97 +22,183 @@ const steps = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
+  },
+};
+
 const HowItWorksSection = () => {
   return (
-    <section id="how-it-works" className="py-24 lg:py-32">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section id="how-it-works" className="py-32 lg:py-40 relative overflow-hidden bg-foreground text-background">
+      {/* Background texture */}
+      <div className="absolute inset-0 opacity-[0.015]" style={{
+        backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+        backgroundSize: '40px 40px'
+      }} />
+      
+      {/* Gradient orbs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-purple-rich/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-medium/20 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-6 lg:px-12 relative">
         {/* Section header */}
-        <div className="max-w-2xl mb-16 lg:mb-24">
-          <span className="text-sm font-medium text-primary mb-4 block">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mb-20 lg:mb-28"
+        >
+          <span className="inline-flex items-center gap-2 text-sm font-medium text-purple-light mb-6 px-4 py-2 rounded-full bg-purple-rich/20 border border-purple-light/20">
+            <Sparkles className="w-4 h-4" />
             PixBella Studio
           </span>
-          <h2 className="text-3xl lg:text-4xl font-semibold text-foreground mb-6">
-            Three steps. No complexity.
+          <h2 className="text-4xl lg:text-5xl xl:text-6xl font-semibold text-background mb-8 leading-[1.1]">
+            Three steps.
+            <span className="block text-neutral-400">No complexity.</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-xl text-neutral-400 leading-relaxed">
             Our workflow is designed for operators, not photographers. 
             Upload, select, generate.
           </p>
-        </div>
+        </motion.div>
 
         {/* Steps */}
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid lg:grid-cols-3 gap-8 lg:gap-6 mb-20 lg:mb-28"
+        >
           {steps.map((step, index) => (
-            <div 
+            <motion.div 
               key={step.number}
-              className="relative"
+              variants={itemVariants}
+              className="relative group"
             >
-              {/* Connector line for desktop */}
+              {/* Connector arrow for desktop */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-16 left-full w-full h-px bg-gradient-to-r from-border to-transparent z-0" />
-              )}
-              
-              <div className="relative z-10">
-                {/* Step number */}
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="text-5xl lg:text-6xl font-semibold text-purple-pale">
-                    {step.number}
-                  </span>
-                  <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center">
-                    <step.icon className="w-7 h-7 text-primary-foreground" />
+                <div className="hidden lg:flex absolute top-1/2 -right-3 z-20 items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center">
+                    <ArrowRight className="w-3 h-3 text-purple-light" />
                   </div>
                 </div>
+              )}
+              
+              <div className="relative h-full p-8 lg:p-10 rounded-3xl bg-neutral-800/50 border border-neutral-700/50 hover:border-purple-rich/30 transition-all duration-500 hover:bg-neutral-800/80">
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 rounded-3xl bg-purple-rich/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative z-10">
+                  {/* Step number & icon */}
+                  <div className="flex items-center gap-6 mb-8">
+                    <span className="text-6xl lg:text-7xl font-semibold text-neutral-700 group-hover:text-neutral-600 transition-colors">
+                      {step.number}
+                    </span>
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-rich to-purple-deep flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-500">
+                      <step.icon className="w-8 h-8 text-background" />
+                    </div>
+                  </div>
 
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
+                  {/* Content */}
+                  <h3 className="text-2xl font-semibold text-background mb-4">
+                    {step.title}
+                  </h3>
+                  <p className="text-neutral-400 text-lg leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Visual representation */}
-        <div className="mt-16 lg:mt-24">
-          <div className="relative rounded-3xl bg-gradient-to-br from-purple-ghost via-secondary to-purple-pale p-8 lg:p-16 overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--purple-light)/0.2),transparent_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--purple-rich)/0.1),transparent_50%)]" />
+        {/* Visual representation - Premium glass design */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <div className="relative rounded-4xl bg-gradient-to-br from-neutral-800/80 to-neutral-900/80 p-10 lg:p-20 overflow-hidden border border-neutral-700/50">
+            {/* Background mesh */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--purple-rich)/0.15),transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--purple-medium)/0.1),transparent_50%)]" />
             
-            <div className="relative flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
-              {/* Input boxes */}
-              <div className="flex gap-4 lg:gap-8">
-                <div className="w-32 h-40 lg:w-40 lg:h-52 rounded-2xl bg-background border-2 border-dashed border-border flex flex-col items-center justify-center gap-2">
-                  <Upload className="w-6 h-6 text-muted-foreground" />
-                  <span className="text-xs text-muted-foreground">Product</span>
-                </div>
-                <div className="w-32 h-40 lg:w-40 lg:h-52 rounded-2xl bg-background border-2 border-dashed border-border flex flex-col items-center justify-center gap-2">
-                  <User className="w-6 h-6 text-muted-foreground" />
-                  <span className="text-xs text-muted-foreground">Model</span>
-                </div>
+            <div className="relative flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-20">
+              {/* Input boxes - Glass morphic */}
+              <div className="flex gap-6 lg:gap-10">
+                <motion.div 
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  className="w-36 h-48 lg:w-44 lg:h-56 rounded-3xl bg-neutral-700/30 border border-neutral-600/50 flex flex-col items-center justify-center gap-4 backdrop-blur-sm"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-neutral-600/50 flex items-center justify-center">
+                    <Upload className="w-7 h-7 text-neutral-300" />
+                  </div>
+                  <span className="text-sm text-neutral-400 font-medium">Product Image</span>
+                </motion.div>
+                <motion.div 
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  className="w-36 h-48 lg:w-44 lg:h-56 rounded-3xl bg-neutral-700/30 border border-neutral-600/50 flex flex-col items-center justify-center gap-4 backdrop-blur-sm"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-neutral-600/50 flex items-center justify-center">
+                    <User className="w-7 h-7 text-neutral-300" />
+                  </div>
+                  <span className="text-sm text-neutral-400 font-medium">Model Reference</span>
+                </motion.div>
               </div>
 
-              {/* Arrow */}
+              {/* Arrow with glow */}
               <div className="flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center rotate-90 lg:rotate-0">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-primary-foreground">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
+                <motion.div 
+                  animate={{ x: [0, 8, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-rich to-purple-deep flex items-center justify-center rotate-90 lg:rotate-0 shadow-glow"
+                >
+                  <ArrowRight className="w-8 h-8 text-background" />
+                </motion.div>
               </div>
 
-              {/* Output */}
-              <div className="w-48 h-64 lg:w-56 lg:h-72 rounded-2xl bg-gradient-to-br from-purple-rich to-purple-deep flex items-center justify-center shadow-2xl shadow-purple-rich/30">
-                <div className="text-center">
-                  <Sparkles className="w-10 h-10 text-primary-foreground mb-2 mx-auto" />
-                  <span className="text-sm text-primary-foreground/80">Generated Image</span>
+              {/* Output - Premium result card */}
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="relative w-52 h-72 lg:w-64 lg:h-80 rounded-3xl bg-gradient-to-br from-purple-rich via-purple-deep to-neutral-900 flex items-center justify-center overflow-hidden shadow-2xl"
+              >
+                {/* Animated border glow */}
+                <div className="absolute inset-0 rounded-3xl border-2 border-purple-light/30" />
+                <div className="absolute -inset-1 bg-gradient-to-br from-purple-light/20 to-transparent rounded-3xl blur-xl opacity-50" />
+                
+                <div className="relative text-center p-6">
+                  <div className="w-16 h-16 rounded-2xl bg-background/10 backdrop-blur flex items-center justify-center mx-auto mb-4">
+                    <Sparkles className="w-8 h-8 text-purple-light" />
+                  </div>
+                  <span className="text-lg font-medium text-background block mb-2">AI Generated</span>
+                  <span className="text-sm text-purple-light/80">Studio-Quality Output</span>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
