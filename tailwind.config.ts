@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +60,26 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        purple: {
+          deep: "hsl(var(--purple-deep))",
+          rich: "hsl(var(--purple-rich))",
+          medium: "hsl(var(--purple-medium))",
+          light: "hsl(var(--purple-light))",
+          pale: "hsl(var(--purple-pale))",
+          ghost: "hsl(var(--purple-ghost))",
+        },
+        neutral: {
+          900: "hsl(var(--neutral-900))",
+          800: "hsl(var(--neutral-800))",
+          700: "hsl(var(--neutral-700))",
+          600: "hsl(var(--neutral-600))",
+          500: "hsl(var(--neutral-500))",
+          400: "hsl(var(--neutral-400))",
+          300: "hsl(var(--neutral-300))",
+          200: "hsl(var(--neutral-200))",
+          100: "hsl(var(--neutral-100))",
+          50: "hsl(var(--neutral-50))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,25 +88,21 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      spacing: {
+        "18": "4.5rem",
+        "22": "5.5rem",
       },
     },
   },
