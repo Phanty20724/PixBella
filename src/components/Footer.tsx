@@ -1,23 +1,24 @@
 import pixbellaLogo from "@/assets/pixbella-logo.png";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const footerLinks = {
   product: [
-    { name: "Features", href: "#features" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Integrations", href: "#" },
-    { name: "Changelog", href: "#" },
+    { name: "Studio", href: "/studio" },
+    { name: "Features", href: "/#features" },
+    { name: "Pricing", href: "/#pricing" },
+    { name: "Docs", href: "/docs" },
   ],
   resources: [
-    { name: "Documentation", href: "#" },
-    { name: "Tutorials", href: "#" },
+    { name: "Documentation", href: "/docs" },
+    { name: "Tutorials", href: "/docs#tutorials" },
     { name: "Blog", href: "#" },
     { name: "Support", href: "#" },
   ],
   company: [
-    { name: "About", href: "#" },
-    { name: "Careers", href: "#" },
+    { name: "About", href: "/about" },
+    { name: "Careers", href: "/about" },
     { name: "Contact", href: "#" },
     { name: "Partners", href: "#" },
   ],
@@ -134,12 +135,21 @@ const Footer = () => {
                     <ul className="space-y-4">
                       {footerLinks.product.map((link) => (
                         <li key={link.name}>
-                          <a 
-                            href={link.href}
-                            className="text-[15px] text-neutral-500 hover:text-purple-600 transition-colors duration-200"
-                          >
-                            {link.name}
-                          </a>
+                          {link.href.startsWith('/') && !link.href.includes('#') ? (
+                            <Link 
+                              to={link.href}
+                              className="text-[15px] text-neutral-500 hover:text-purple-600 transition-colors duration-200"
+                            >
+                              {link.name}
+                            </Link>
+                          ) : (
+                            <a 
+                              href={link.href}
+                              className="text-[15px] text-neutral-500 hover:text-purple-600 transition-colors duration-200"
+                            >
+                              {link.name}
+                            </a>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -155,12 +165,21 @@ const Footer = () => {
                     <ul className="space-y-4">
                       {footerLinks.resources.map((link) => (
                         <li key={link.name}>
-                          <a 
-                            href={link.href}
-                            className="text-[15px] text-neutral-500 hover:text-purple-600 transition-colors duration-200"
-                          >
-                            {link.name}
-                          </a>
+                          {link.href.startsWith('/') && !link.href.includes('#') ? (
+                            <Link 
+                              to={link.href}
+                              className="text-[15px] text-neutral-500 hover:text-purple-600 transition-colors duration-200"
+                            >
+                              {link.name}
+                            </Link>
+                          ) : (
+                            <a 
+                              href={link.href}
+                              className="text-[15px] text-neutral-500 hover:text-purple-600 transition-colors duration-200"
+                            >
+                              {link.name}
+                            </a>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -176,12 +195,21 @@ const Footer = () => {
                     <ul className="space-y-4">
                       {footerLinks.company.map((link) => (
                         <li key={link.name}>
-                          <a 
-                            href={link.href}
-                            className="text-[15px] text-neutral-500 hover:text-purple-600 transition-colors duration-200"
-                          >
-                            {link.name}
-                          </a>
+                          {link.href.startsWith('/') && !link.href.includes('#') ? (
+                            <Link 
+                              to={link.href}
+                              className="text-[15px] text-neutral-500 hover:text-purple-600 transition-colors duration-200"
+                            >
+                              {link.name}
+                            </Link>
+                          ) : (
+                            <a 
+                              href={link.href}
+                              className="text-[15px] text-neutral-500 hover:text-purple-600 transition-colors duration-200"
+                            >
+                              {link.name}
+                            </a>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -197,15 +225,15 @@ const Footer = () => {
                 &copy; {new Date().getFullYear()} PixBella. All rights reserved.
               </p>
               <div className="flex items-center gap-8">
-                <a href="#" className="text-sm text-neutral-400 hover:text-purple-600 transition-colors duration-200">
+                <Link to="/privacy" className="text-sm text-neutral-400 hover:text-purple-600 transition-colors duration-200">
                   Privacy Policy
-                </a>
-                <a href="#" className="text-sm text-neutral-400 hover:text-purple-600 transition-colors duration-200">
+                </Link>
+                <Link to="/terms" className="text-sm text-neutral-400 hover:text-purple-600 transition-colors duration-200">
                   Terms of Service
-                </a>
-                <a href="#" className="text-sm text-neutral-400 hover:text-purple-600 transition-colors duration-200">
+                </Link>
+                <Link to="/cookies" className="text-sm text-neutral-400 hover:text-purple-600 transition-colors duration-200">
                   Cookies
-                </a>
+                </Link>
               </div>
             </div>
           </div>

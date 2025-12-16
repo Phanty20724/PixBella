@@ -1,8 +1,19 @@
 import { Button } from "@/components/ui/button";
 import pixbellaLogo from "@/assets/pixbella-logo.png";
 import { motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  const navItems = [
+    { name: "Studio", href: "/studio" },
+    { name: "How It Works", href: isHomePage ? "#how-it-works" : "/#how-it-works" },
+    { name: "Pricing", href: isHomePage ? "#pricing" : "/#pricing" },
+    { name: "Docs", href: "/docs" },
+  ];
+
   return (
     <motion.header 
       initial={{ y: -100, opacity: 0 }}
@@ -17,8 +28,7 @@ const Navigation = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          {/* Logo */}
-          <a href="/" className="flex items-center gap-2 relative hover:scale-105 transition-transform duration-300">
+          <Link to="/" className="flex items-center gap-2 relative hover:scale-105 transition-transform duration-300">
             <motion.img 
               src={pixbellaLogo} 
               alt="PixBella" 
@@ -26,35 +36,48 @@ const Navigation = () => {
               whileHover={{ scale: 1.08 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
-          </a>
+          </Link>
 
-          {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center gap-4">
-            {["Studio", "How It Works", "Pricing", "Docs"].map((item, index) => (
-              <div key={item} className="flex items-center gap-4">
-                <a 
-                  href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
-                  className="relative text-sm font-medium transition-colors duration-300 group"
-                  style={{ color: '#acadb0' }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#a855f7'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#acadb0'}
-                >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full" />
-                </a>
-                {index < 3 && <span style={{ color: '#acadb0' }}>|</span>}
+            {navItems.map((item, index) => (
+              <div key={item.name} className="flex items-center gap-4">
+                {item.href.startsWith("#") || item.href.includes("/#") ? (
+                  <a 
+                    href={item.href} 
+                    className="relative text-sm font-medium transition-colors duration-300 group"
+                    style={{ color: '#acadb0' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#a855f7'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#acadb0'}
+                  >
+                    {item.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full" />
+                  </a>
+                ) : (
+                  <Link 
+                    to={item.href} 
+                    className="relative text-sm font-medium transition-colors duration-300 group"
+                    style={{ color: location.pathname === item.href ? '#a855f7' : '#acadb0' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#a855f7'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = location.pathname === item.href ? '#a855f7' : '#acadb0'}
+                  >
+                    {item.name}
+                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary rounded-full transition-all duration-300 ${location.pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                  </Link>
+                )}
+                {index < navItems.length - 1 && <span style={{ color: '#acadb0' }}>|</span>}
               </div>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <Button 
-            variant="default" 
-            size="sm" 
-            className="rounded-lg px-6 font-medium"
-          >
-            Get Started
-          </Button>
+          <Link to="/studio">
+            <Button 
+              variant="default" 
+              size="sm" 
+              className="rounded-lg px-6 font-medium"
+            >
+              Get Started
+            </Button>
+          </Link>
         </motion.nav>
       </div>
     </motion.header>
