@@ -41,7 +41,7 @@ const Footer = () => {
           <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-gradient-to-tl from-purple-300/15 to-transparent rounded-full blur-3xl" />
           
           <div className="relative z-10 py-20 lg:py-28 px-6 lg:px-12 text-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-shimmer mb-6" style={{ letterSpacing: '-0.035em' }}>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-shimmer mb-6 pb-2 leading-tight" style={{ letterSpacing: '-0.035em' }}>
               Ready to transform your imagery?
             </h2>
             <p className="text-purple-100/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
