@@ -6,7 +6,6 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import DifferentiationSection from "@/components/DifferentiationSection";
 import StatsSection from "@/components/StatsSection";
 import PricingSection from "@/components/PricingSection";
-import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -20,7 +19,6 @@ const Index = () => {
       <DifferentiationSection />
       <StatsSection />
       <PricingSection />
-      <FinalCTASection />
       <Footer />
     </main>
   );
