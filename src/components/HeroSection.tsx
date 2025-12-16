@@ -37,47 +37,20 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 lg:px-12 pt-20">
+      <div className="container relative z-10 mx-auto px-6 lg:px-12">
         <div className="max-w-4xl">
           {/* Headline - Massive & Editorial */}
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-semibold text-foreground leading-[0.95] mb-6"
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-semibold text-foreground leading-[0.95] mb-8"
           >
             Studio-quality
             <br />
             fashion imagery.
+            <span className="block mt-2 text-gradient">Generated, not photographed.</span>
           </motion.h1>
-
-          {/* Subheading with emphasis */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="mb-12"
-          >
-            <p className="text-3xl sm:text-4xl lg:text-5xl font-semibold bg-gradient-to-r from-purple-rich via-purple-medium to-purple-rich bg-clip-text text-transparent mb-8">
-              Generated, not photographed.
-            </p>
-          </motion.div>
-
-          {/* Eyebrow Badge - Moved Down */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="mb-12"
-          >
-            <span className="inline-flex items-center gap-3 text-sm font-medium text-purple-rich px-4 py-2 rounded-full bg-purple-pale/50 border border-purple-light/20">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-purple-rich opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-rich"></span>
-              </span>
-              AI Fashion Technology
-            </span>
-          </motion.div>
 
           {/* Subheading */}
           <motion.p 
