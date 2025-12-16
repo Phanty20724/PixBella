@@ -37,7 +37,7 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 lg:px-12">
+      <div className="container relative z-10 mx-auto px-6 lg:px-12 pt-32 lg:pt-40">
         <div className="max-w-4xl">
           {/* Headline - Massive & Editorial */}
           <motion.h1 
