@@ -12,7 +12,7 @@ const Navigation = () => {
     >
       <div className="flex justify-center">
         <motion.nav 
-          className="px-6 py-0 rounded-3xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-border/20 shadow-soft flex items-center gap-6"
+          className="px-6 py-1 rounded-3xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-border/20 shadow-soft flex items-center gap-4"
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -22,7 +22,7 @@ const Navigation = () => {
             <motion.img 
               src={pixbellaLogo} 
               alt="PixBella" 
-              className="h-16 lg:h-20 w-auto -translate-y-2"
+              className="h-20 lg:h-24 w-auto -translate-y-2"
               whileHover={{ scale: 1.08 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
