@@ -18,7 +18,7 @@ const Navigation = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 relative hover:scale-105 transition-transform duration-300">
+          <a href="/" className="flex items-center gap-2 relative hover:scale-105 transition-transform duration-300 -my-2">
             <motion.img 
               src={pixbellaLogo} 
               alt="PixBella" 
