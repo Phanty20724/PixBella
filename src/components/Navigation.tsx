@@ -29,17 +29,19 @@ const Navigation = () => {
           </a>
 
           {/* Navigation Links - Desktop */}
-          <div className="hidden md:flex items-center gap-8">
-            {["Studio", "How It Works", "Pricing", "Docs"].map((item) => (
-              <a 
-                key={item}
-                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
-                className="relative text-sm font-medium hover:text-primary transition-colors duration-300 group"
-                style={{ color: '#acadb0' }}
-              >
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full" />
-              </a>
+          <div className="hidden md:flex items-center gap-4">
+            {["Studio", "How It Works", "Pricing", "Docs"].map((item, index) => (
+              <div key={item} className="flex items-center gap-4">
+                <a 
+                  href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                  className="relative text-sm font-medium hover:text-primary transition-colors duration-300 group"
+                  style={{ color: '#acadb0' }}
+                >
+                  {item}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full" />
+                </a>
+                {index < 3 && <span style={{ color: '#acadb0' }}>|</span>}
+              </div>
             ))}
           </div>
 
