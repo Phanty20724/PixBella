@@ -59,22 +59,40 @@ const Footer = () => {
         </div>
         
         <div className="absolute bottom-0 left-0 right-0">
+          <div className="absolute bottom-[60px] left-0 right-0 h-[80px] bg-gradient-to-t from-white/40 via-white/20 to-transparent blur-xl" />
+          <div className="absolute bottom-[40px] left-0 right-0 h-[60px] bg-gradient-to-t from-white/30 to-transparent blur-lg" />
           <svg 
             viewBox="0 0 1440 120" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto"
+            className="w-full h-auto relative z-10"
             preserveAspectRatio="none"
           >
+            <defs>
+              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="white" stopOpacity="0.6" />
+                <stop offset="40%" stopColor="white" stopOpacity="0.85" />
+                <stop offset="100%" stopColor="white" stopOpacity="1" />
+              </linearGradient>
+              <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+              </filter>
+            </defs>
             <path 
-              d="M0 120L1440 120L1440 60C1440 60 1280 0 720 0C160 0 0 60 0 60L0 120Z" 
+              d="M0 120L1440 120L1440 50C1440 50 1280 0 720 0C160 0 0 50 0 50L0 120Z" 
+              fill="url(#waveGradient)"
+              filter="url(#blur)"
+            />
+            <path 
+              d="M0 120L1440 120L1440 60C1440 60 1280 10 720 10C160 10 0 60 0 60L0 120Z" 
               fill="white"
             />
           </svg>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent z-20" />
       </section>
 
-      <footer className="bg-white relative pt-8">
+      <footer className="bg-white relative pt-4">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="py-16 lg:py-20">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
@@ -226,8 +244,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="relative overflow-hidden bg-white pb-8">
-          <div className="text-[14vw] md:text-[12vw] font-bold text-transparent bg-clip-text bg-gradient-to-b from-neutral-100 to-neutral-50 tracking-tighter text-center leading-none select-none pointer-events-none" style={{ WebkitTextStroke: '1px rgba(0,0,0,0.03)' }}>
+        <div className="relative overflow-hidden bg-white pt-8 pb-4">
+          <div 
+            className="text-[22vw] md:text-[18vw] lg:text-[16vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-neutral-200/80 via-neutral-100/60 to-neutral-50/40 tracking-[-0.05em] text-center leading-[0.75] select-none pointer-events-none whitespace-nowrap w-full"
+            style={{ 
+              WebkitTextStroke: '1px rgba(0,0,0,0.02)',
+              letterSpacing: '-0.02em'
+            }}
+          >
             PixBella
           </div>
         </div>
