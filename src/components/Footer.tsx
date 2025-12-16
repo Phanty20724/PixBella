@@ -25,22 +25,22 @@ const footerLinks = {
 
 const Footer = () => {
   return (
-    <div className="relative">
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-600 via-purple-700 to-purple-900">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,255,255,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(147,51,234,0.3),transparent_50%)]" />
-        
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-purple-400/20 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-purple-300/15 to-transparent rounded-full blur-3xl" />
-        
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="py-28 lg:py-36 text-center"
-          >
+    <div className="relative bg-neutral-100/50">
+      <section className="py-8 lg:py-12 px-4 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative overflow-hidden rounded-[2rem] lg:rounded-[3rem] bg-gradient-to-br from-purple-600 via-purple-700 to-purple-900 max-w-7xl mx-auto"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,255,255,0.15),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(147,51,234,0.3),transparent_50%)]" />
+          
+          <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-purple-400/20 to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-gradient-to-tl from-purple-300/15 to-transparent rounded-full blur-3xl" />
+          
+          <div className="relative z-10 py-20 lg:py-28 px-6 lg:px-12 text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
               Ready to transform your imagery?
             </h2>
@@ -55,44 +55,11 @@ const Footer = () => {
             >
               Start for free
             </Button>
-          </motion.div>
-        </div>
-        
-        <div className="absolute bottom-0 left-0 right-0">
-          <div className="absolute bottom-[60px] left-0 right-0 h-[80px] bg-gradient-to-t from-white/40 via-white/20 to-transparent blur-xl" />
-          <div className="absolute bottom-[40px] left-0 right-0 h-[60px] bg-gradient-to-t from-white/30 to-transparent blur-lg" />
-          <svg 
-            viewBox="0 0 1440 120" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto relative z-10"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="white" stopOpacity="0.6" />
-                <stop offset="40%" stopColor="white" stopOpacity="0.85" />
-                <stop offset="100%" stopColor="white" stopOpacity="1" />
-              </linearGradient>
-              <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
-              </filter>
-            </defs>
-            <path 
-              d="M0 120L1440 120L1440 50C1440 50 1280 0 720 0C160 0 0 50 0 50L0 120Z" 
-              fill="url(#waveGradient)"
-              filter="url(#blur)"
-            />
-            <path 
-              d="M0 120L1440 120L1440 60C1440 60 1280 10 720 10C160 10 0 60 0 60L0 120Z" 
-              fill="white"
-            />
-          </svg>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent z-20" />
+          </div>
+        </motion.div>
       </section>
 
-      <footer className="bg-white relative pt-4">
+      <footer className="bg-neutral-100/50 relative pt-8">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="py-16 lg:py-20">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
@@ -244,9 +211,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="relative overflow-hidden bg-white pt-8 pb-4">
+        <div className="relative overflow-hidden bg-neutral-100/50 pt-8 pb-4">
           <div 
-            className="text-[22vw] md:text-[18vw] lg:text-[16vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-neutral-200/80 via-neutral-100/60 to-neutral-50/40 tracking-[-0.05em] text-center leading-[0.75] select-none pointer-events-none whitespace-nowrap w-full"
+            className="text-[22vw] md:text-[18vw] lg:text-[16vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-neutral-300/60 via-neutral-200/40 to-neutral-100/20 tracking-[-0.05em] text-center leading-[0.75] select-none pointer-events-none whitespace-nowrap w-full"
             style={{ 
               WebkitTextStroke: '1px rgba(0,0,0,0.02)',
               letterSpacing: '-0.02em'
