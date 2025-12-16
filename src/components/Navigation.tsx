@@ -1,50 +1,40 @@
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import pixbellaLogo from "@/assets/pixbella-logo.png";
 import { motion } from "framer-motion";
 
 const Navigation = () => {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <motion.header 
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? "glass border-b border-border/30 shadow-soft" 
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 pt-6"
     >
-      <nav className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div className="flex justify-center">
+        <motion.nav 
+          className="px-8 py-4 rounded-full bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-border/20 shadow-soft flex items-center gap-8"
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 relative z-10 hover:scale-105 transition-transform duration-300">
+          <a href="/" className="flex items-center gap-2 relative hover:scale-105 transition-transform duration-300">
             <motion.img 
               src={pixbellaLogo} 
               alt="PixBella" 
-              className="h-10 lg:h-14 w-auto"
+              className="h-6 lg:h-8 w-auto"
               whileHover={{ scale: 1.08 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
           </a>
 
           {/* Navigation Links - Desktop */}
-          <div className="hidden md:flex items-center gap-10">
-            {["Product", "How It Works", "Pricing"].map((item) => (
+          <div className="hidden md:flex items-center gap-8">
+            {["Studio", "How It Works", "Pricing", "Docs"].map((item) => (
               <a 
                 key={item}
                 href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
-                className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 group"
+                className="relative text-sm font-medium text-foreground hover:text-primary transition-colors duration-300 group"
               >
                 {item}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full" />
@@ -52,17 +42,16 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="flex items-center gap-3">
-            <Button variant="ghost" size="sm" className="hidden sm:inline-flex text-muted-foreground hover:text-foreground">
-              Sign In
-            </Button>
-            <Button variant="default" size="sm" className="shadow-soft hover:shadow-medium transition-shadow">
-              Get Started
-            </Button>
-          </div>
-        </div>
-      </nav>
+          {/* CTA Button */}
+          <Button 
+            variant="default" 
+            size="sm" 
+            className="rounded-full px-6 font-medium"
+          >
+            Sign In
+          </Button>
+        </motion.nav>
+      </div>
     </motion.header>
   );
 };
