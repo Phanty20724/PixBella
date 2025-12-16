@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex flex-col justify-start pt-20 lg:pt-0 overflow-visible">
+    <section className="relative min-h-screen flex flex-col justify-start pt-32 lg:pt-32 overflow-visible">
       {/* Background Image with Premium Overlay */}
       <div className="absolute inset-0 z-0">
         <motion.img 
@@ -37,7 +37,7 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 lg:px-12 pt-20 lg:pt-24">
+      <div className="container relative z-10 mx-auto px-6 lg:px-12 pt-8 lg:pt-12">
         <div className="max-w-4xl">
           {/* Headline - Massive & Editorial */}
           <motion.h1 
