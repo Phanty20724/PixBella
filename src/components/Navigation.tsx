@@ -28,11 +28,13 @@ const Navigation = () => {
       <nav className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 relative z-10">
-            <img 
+          <a href="/" className="flex items-center gap-2 relative z-10 hover:scale-105 transition-transform duration-300">
+            <motion.img 
               src={pixbellaLogo} 
               alt="PixBella" 
-              className="h-8 lg:h-10 w-auto"
+              className="h-10 lg:h-14 w-auto"
+              whileHover={{ scale: 1.08 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
           </a>
 

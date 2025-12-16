@@ -35,3 +35,7 @@ The application runs on port 5000 with `npm run dev`.
 ## Recent Changes
 - Dec 16, 2025: Migrated from Lovable to Replit environment
 - Configured Vite to use port 5000 with allowedHosts enabled
+- Enhanced hero section with bigger PixBella logo
+- Reorganized hero layout: moved "AI Fashion Technology" badge below headlines
+- Added purple gradient emphasis to "Generated, not photographed" text
+- Improved visual hierarchy with better spacing and text organization
