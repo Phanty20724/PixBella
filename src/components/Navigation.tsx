@@ -12,7 +12,7 @@ const Navigation = () => {
     >
       <div className="flex justify-center">
         <motion.nav 
-          className="px-6 py-0 rounded-xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-border/20 shadow-soft flex items-center gap-3"
+          className="px-6 py-0 rounded-2xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-border/20 shadow-soft flex items-center gap-3"
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -34,7 +34,8 @@ const Navigation = () => {
               <a 
                 key={item}
                 href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
-                className="relative text-sm font-medium text-foreground hover:text-primary transition-colors duration-300 group"
+                className="relative text-sm font-medium hover:text-primary transition-colors duration-300 group"
+                style={{ color: '#acadb0' }}
               >
                 {item}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full" />
@@ -48,7 +49,7 @@ const Navigation = () => {
             size="sm" 
             className="rounded-full px-6 font-medium"
           >
-            Sign In
+            Get Started
           </Button>
         </motion.nav>
       </div>
