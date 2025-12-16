@@ -22,7 +22,7 @@ const Navigation = () => {
             <motion.img 
               src={pixbellaLogo} 
               alt="PixBella" 
-              className="h-20 lg:h-24 w-auto -translate-y-2"
+              className="h-16 lg:h-20 w-auto -translate-y-2"
               whileHover={{ scale: 1.08 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
