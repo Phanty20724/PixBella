@@ -51,7 +51,7 @@ const Navigation = () => {
           <Button 
             variant="default" 
             size="sm" 
-            className="rounded-2xl px-6 font-medium"
+            className="rounded-lg px-6 font-medium"
           >
             Get Started
           </Button>
