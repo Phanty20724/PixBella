@@ -12,7 +12,7 @@ const Navigation = () => {
     >
       <div className="flex justify-center">
         <motion.nav 
-          className="px-8 py-4 rounded-3xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-border/20 shadow-soft flex items-center gap-8"
+          className="px-6 py-2 rounded-3xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-border/20 shadow-soft flex items-center gap-6"
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
